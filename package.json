@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/hfm-an/blog/issues"
   },
-  "homepage": "https://github.com/hfm-an/blog#readme"
+  "homepage": "https://github.com/hfm-an/blog#readme",
+  "dependencies": {
+    "koa": "^2.5.3"
+  }
 }
