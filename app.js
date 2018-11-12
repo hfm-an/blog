@@ -6,23 +6,28 @@
  */
 const Koa = require('koa')
 const Router = require('koa-router')
+const nunjucks = require('nunjucks')
+const views = require('koa-views')
 
 const app = new Koa()
+
+// 模板引擎配置
+nunjucks.configure('views', {
+    autoescape: true,
+})
+
+app.use(views(`${__dirname}/views`, {
+    map : {
+        html : 'nunjucks'
+    }
+}))
+
 // 初始化 router
 const router = new Router()
 
-router
-    .get(
-        'user',
-        /^\/user.*$/,
-        (ctx, next) => {
-            next()
-            console.log(12345)
-        },
-        (ctx, next) => {
-            ctx.body = '这里的 router 为 /'
-        }
-    )
+const routersRegister = require('./router')
+
+routersRegister(router)
 
 app
     .use(router.routes())
