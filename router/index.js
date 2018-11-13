@@ -3,7 +3,8 @@
  */
 const routes = {
     // 列表页
-    list : require('./list')
+    list : require('./list'),
+    views : require('./views')
 }
 
 module.exports = function routersRegister (router) {
